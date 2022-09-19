@@ -47,27 +47,15 @@ Para conseguir información sobre el comportamiento de las personas, a varios pa
 
 Una lista de 12 actividades diferentes fue diseñada y definida usando la tecnología propuesta. La tabla 1 describe las 12 actividades definidas, además de una breve descripción sobre ellas.
 
-\begin{table}[t]
-    \begin{center}
-            \hline Actividad & Descripción \\ \hline
-            Dibujar las rutas de los circuitos & El circuito para ser impreso es diseñado usando un programa PC de software específico \\ \hline
-            Imprimir el circuito diseñado usando un plóter & Usando fundas externas y un plóter, el circuito diseñado es impreso \\ \hline
-            Limpiar las caras del laminado de cobre & Usando un producto especial, todo el polvo y las partículas se eliminan de las caras del laminado de cobre \\ \hline
-            Copiar el circuito diseñado en las caras del cobre & El circuito diseñado en las fundas externas se copia en el laminado de cobre usando una explosión de rayos ultravioletas \\ \hline
-            Sumergir las placas en la piscina con ácido & Para eliminar lo innecesario del cobre, sumergimos las caras del laminado de cobre en un baño de ácido \\ \hline
-            Lavar el cobre con un baño de disolvente & Después del baño de ácido, la superficie del cobre restante se lava con un baño de disolvente \\ \hline
-            Capa de alineamiento & PCB están compuesto de varias capas, alineadas y amontonadas durante su fase \\ \hline
-            Inspección óptica & Se revisa la capa de alineamiento con un láser \\ \hline
-            Unir las capas exteriores con el sustrato & Usando un pegamento epóxico, las capas finales y exteriores de las placas se unen \\ \hline
-            Unir la placa & La unión ocurre en una mesa de acero pesado con abrazaderas metálicas \\ \hline
-            Taladrar los agujeros necesarios & Los agujeros para componentes, etcétecera, son taladrados en el montón de placas \\ \hline
-            Enchapado & En un horno, la placa está lista \\ \hline
-            
-            
 
-        \end{tabular}
-    \end{center}
-\end{table}
+
+18 personas estuvieron involucradas en el experimento. Las personas fueron solicitadas para realizar las actividades con números aleatorios. El orden verdadero, así como el de las actividades es reconocido y almacenado por un proceso de software supervisor. La tasa global de éxito para todas las soluciones ha sido evaluada, identificando, el mismo éxito para cada una de las distintas fases.
+
+Para evaluar las mejoras obtenidas en comparación con las soluciones similares ya existentes, la misma secuencia de datos físicos ha sido empleada para alimentar la solución de un patrón estándar de reconocimiento basado solo en HMM. Usando un software de procesamiento de datos específicos, algunos resultados relevantes han sido obtenidos.
+
+La figura 4 representa la tasa media de éxito para 3 casos: la solución global, la primera fase(DTW) y la segunda fase (HMM). Además, la tasa de éxito para el tradicional HMM-based acercamiento está incluido. Como se puede ver, la tecnología sugerida es, globalmente, alrededor de un 9 \% mejor que  las técnicas tradicionales de reconocimiento de patrón basadas en HMM exclusivamente. Además, la primera fase(basada en DTW) es alrededor de un 20 \% peor que la segunda fase(HMM) que es significativo que las DTW técnicas son más débiles por defecto.
+
+
 \section {Conclusiones y futuros trabajos}
 En este paper presentamos un nuevo patrón algorítmico de reconocimiento para integrar individuos en los sistemas de la Industria 4.0 y los procesos dirigidos por humano. El algoritmo define actividades complejas como una composición de movimientos simples. Las actividades complejas son reconocidas empleando los Modelos Ocultos de Maekov, y los movimientos simples son reconocidos utilizando las DWT. Con el fin de activar el implemento de este algoritmo incrustado en objetos pequeños, se seleccionan configuraciones ligeras. Una prueba experimental de esto es llevarlo a cabo, y los resultados muestran una mejora global en un exitoso índice del 9%.
 Los futuros trabajos considerarán metodologías más complejas para el procesamiento de datos, y la comparación para configuraciones distintas de la propuesta serán evaluadas.
