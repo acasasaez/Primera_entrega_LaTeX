@@ -38,9 +38,37 @@ Por lo tanto, el objetivo de este paper es describir un nuevo algoriitmo de reco
 El resto del paper se organiza como sigue: en la Sección 2 se describe el funcionamiento del reconocimiento de patrones para actividades humanas; en la Sección 3 se describe la solución propuesta, incluyrndo las dos fases definidas; la Sección 4 presenta una prueba  experimental utilizando un escenario real; y la en la sección se concluye el paper.
 \section {Validación experimental: implementación y resultados}
 \section {Algoritmo de reconocimiento de patrones en dos fases}
-\subsection{d}
-\subsection{f}
+\subsection{Reconocimiento de movimientos simples: Dinámicas de Deformación del Tiempo}
+\subsection{Reconocimiento de movimientos complejos: Modelos Ocultos de Markov}
 \section {Validación experimental: implementación y resultados}
+Con el fin de evaluar el cumplimiento de la solución propuesta, se ha designado una validación experimental y se ha llevado a cabo. Un escenario industrial ha sido imitado en algunas salas grandes de la Universidad Politécnica de Madrid. El escenario representó a una compañia tradicional de producción de productos hechos a mano. En particular, imitaron un pequeño PCB(placa de circuito impreso) productor.
+
+Para conseguir información sobre el comportamiento de las personas, a varios participantes se les proporcionó guantes cibernéticos, incluyendo acelerómetros y un lector RFID. Los objetos cercanos al escenario fueron identificados con una etiqueta RFID, por lo que la plataforma de hardware propuesta puede identificar la posición de la mano y los objetos con los que las personas han interactuado. 
+
+Una lista de 12 actividades diferentes fue diseñada y definida usando la tecnología propuesta. La tabla 1 describe las 12 actividades definidas, además de una breve descripción sobre ellas.
+
+\begin{table}[t]
+    \begin{center}
+        \begin{tabular}{ | m{2cm} | m{5cm} | }
+            \hline Actividad & Descripción \\ \hline
+            Dibujar las rutas de los circuitos & El circuito para ser impreso es diseñado usando un programa PC de software específico \\ \hline
+            Imprimir el circuito diseñado usando un plóter & Usando fundas externas y un plóter, el circuito diseñado es impreso \\ \hline
+            Limpiar las caras del laminado de cobre & Usando un producto especial, todo el polvo y las partículas se eliminan de las caras del laminado de cobre \\ \hline
+            Copiar el circuito diseñado en las caras del cobre & El circuito diseñado en las fundas externas se copia en el laminado de cobre usando una explosión de rayos ultravioletas \\ \hline
+            Sumergir las placas en la piscina con ácido & Para eliminar lo innecesario del cobre, sumergimos las caras del laminado de cobre en un baño de ácido \\ \hline
+            Lavar el cobre con un baño de disolvente & Después del baño de ácido, la superficie del cobre restante se lava con un baño de disolvente \\ \hline
+            Capa de alineamiento & PCB están compuesto de varias capas, alineadas y amontonadas durante su fase \\ \hline
+            Inspección óptica & Se revisa la capa de alineamiento con un láser \\ \hline
+            Unir las capas exteriores con el sustrato & Usando un pegamento epóxico, las capas finales y exteriores de las placas se unen \\ \hline
+            Unir la placa & La unión ocurre en una mesa de acero pesado con abrazaderas metálicas \\ \hline
+            Taladrar los agujeros necesarios & Los agujeros para componentes, etcétecera, son taladrados en el montón de placas \\ \hline
+            Enchapado & En un horno, la placa está lista \\ \hline
+            
+            
+
+        \end{tabular}
+    \end{center}
+\end{table}
 \section {Conclusiones y futuros trabajos}
 
 \end{document}
