@@ -22,8 +22,8 @@
 \maketitle
 
 \begin{abstract}
-Los futuros sistemas de industria, la revolución conocida como la Industria 4.0, están considerando integrar gente en el mundo de Internet como potenciales prosumidores (entre proveedores de servicios y consumidores). En este contexto, el trabajo dirigido por humanos aprece como una realidad esencial y los instrumentos para generar bucles  de información que se retroalimentan entre el subsistema social (personas) y el subsistema cibernético (componentes tecnológicas) son necesarios. A pesar de que muchos instrumentos distintos han sido propuestos, a día de hoy las técnicas de reconocimiento de patrones son las más prometedoras. Sin embargo, estas soluciones presentan algunos problemas pendientes. Por ejemplo, estos dependen del hadware seleccionado para obtener información de los usuarios; o presentan límites en el proceso de identificación. Para abordar esta situación, en este paper se propone un algoritmo de dos fases para integrar a las personas en los sistemas de la Industria 4.0. El algoritmo define acciones complejas como una composición de simples movimientos. Las acciones complejas son reconocidas utilizando los Movimientos Ocultos de Markov, y solo los movimientos simples se reconocen a través la DWT . De este modo, solo los movimientos dependen de los recursos de hadrdware empleados para capturar información, y se incrementa  la precisión en el reconocimiento de acciones complejas. Una validación experimental será también llevada a cabo para evaluar y comparar la interpretación de los resultados propuestos.
-Palabras clave: Industria 4.0; reconocimiento de patrones; DWT; Inteligencia Artificial; Modelos Ocultos de Markov.
+	Los futuros sistemas de industria, la revolución conocida como la Industria 4.0, están considerando integrar gente en el mundo de Internet como potenciales prosumidores (entre proveedores de servicios y consumidores). En este contexto, el trabajo dirigido por humanos aprece como una realidad esencial y los instrumentos para generar bucles  de información que se retroalimentan entre el subsistema social (personas) y el subsistema cibernético (componentes tecnológicas) son necesarios. A pesar de que muchos instrumentos distintos han sido propuestos, a día de hoy las técnicas de reconocimiento de patrones son las más prometedoras. Sin embargo, estas soluciones presentan algunos problemas pendientes. Por ejemplo, estos dependen del hadware seleccionado para obtener información de los usuarios; o presentan límites en el proceso de identificación. Para abordar esta situación, en este paper se propone un algoritmo de dos fases para integrar a las personas en los sistemas de la Industria 4.0. El algoritmo define acciones complejas como una composición de simples movimientos. Las acciones complejas son reconocidas utilizando los Movimientos Ocultos de Markov, y solo los movimientos simples se reconocen a través la DWT . De este modo, solo los movimientos dependen de los recursos de hadrdware empleados para capturar información, y se incrementa  la precisión en el reconocimiento de acciones complejas. Una validación experimental será también llevada a cabo para evaluar y comparar la interpretación de los resultados propuestos.
+	Palabras clave: Industria 4.0; reconocimiento de patrones; DWT; Inteligencia Artificial; Modelos Ocultos de Markov.
 \end{abstract}
 
 \section{Introducción}
@@ -32,23 +32,84 @@ Por ejemplo, los trabajadores en producción en cadena fueron sustituidos por ro
 Sin embargo, algunas aplicaciones industriales no pueden basarse en soluciones tecnológicas, por lo que la mano de obra se vuelve esencial [3].  Los productos hechos a mano son un ejemplo que reflejan la importancia del trabajo humano. Estos sectores de la industria, en cualquier caso, deben integrarse en la cuarta revolución industrial. Desde la unión de los Sistemas Ciber-Físicos (CPS) y el papel de las personas como proveedores de servicios (trabajos activos), surgen los CPS humanizados[4]. En estos nuevos sistemas, los procesos dirigidos por humanos están permitidos; los procesos[5] i.e. que son conocidos, ejecutados y controlados por gente (aunque serán supervisados a través de mecanismos digitales).
 Para una verdadera integración entre la gente y la tecnología, que elemine los procesos de ejecución humana o tecnológica, para lo que se requieren técnicas de extración de información. Durante los últimos años se han citado distintos métodos posibles, pero a día de hoy las técnicas de reconocimiento de patrones parecen las más promentedoras.
 El uso de la IA, modelos estadísticos y recursos similares ha permitido un increíble desarrollo de los métodos de reconocimiento de patrones, aunque todavía quedan retos pendientes.
-Inicialmente, las técnicas de reconocimiento de patrones dependen del hardware subyacente para la captura de información. La estructura y la memorización varía si (por ejemplo)   empleamos sensores de infrarrojos en vez de acelerómetros. Es muy problemática la velocicidad de evolución de las tecnologías hardware con respecto al software. 
+Inicialmente, las técnicas de reconocimiento de patrones dependen del hardware subyacente para la captura de información. La estructura y la memorización varía si (por ejemplo)   empleamos sensores de infrarrojos en vez de acelerómetros. Es muy problemática la velocicidad de evolución de las tecnologías hardware con respecto al software.
 Por otro lado, existe un límite en la precisión del reconocimiento de procesos. De hecho, con las acciones humanas se vuelve más complicado, ya que se requieren más variables y modelos complejos para su reconocimiento. Esta aproximación genera grandes problemas de optimización con un error que aumenta al incrementar el número de variables, lo que provoca un decrecimiento del índice de reconocimiento[6]. En conclusión, las matemáticas (-------) aportan una cierta precisión al proceso de reconocimiento de patrones dando medidas para estudiar. Para evitar esta situación, deben ser consideradas menos variables. lo que reduce la complejidad del problema a la hora de analizarlo, una solución que no es aceptable en los ámbitos de la industria donde se desarrollan actividades de producción complejas.
 Por lo tanto, el objetivo de este paper es describir un nuevo algoriitmo de reconocimiento de patrones dirigido a estos dos problrmas. El mecanismo propuesto define las acciones como una composición de movimientos simples. Estos se reconocen utilizando las técnicas de Deformación Dinámica del Tiempo (DTW) [7]. Este proceso depende del hardware empleado para la captura de información; pero las DTW son flexibles y la actualización del repositorio de reconocimiento es suficiente para configurar el algoritmo completo. Por otro lado, las acciones complejas son reconocidas como una combinación de movimientos simples a través de los Modelos Ocultos de Markov. HMM) [8]. Estos son totalmente independientes de la tecnología hardware , ya que solo consideran acciones simples. Estas dos fases  se aproximan y reducen la complejidad de los modelos, incrementando la precisión y el éxito del índice ene en el reconocimiento de patrones.
 El resto del paper se organiza como sigue: en la Sección 2 se describe el funcionamiento del reconocimiento de patrones para actividades humanas; en la Sección 3 se describe la solución propuesta, incluyrndo las dos fases definidas; la Sección 4 presenta una prueba  experimental utilizando un escenario real; y la en la sección se concluye el paper.
-\section {Validación experimental: implementación y resultados}
+\section {Estado del arte en el reconocimiento de patrones }
+Se han informado muchas técnicas diferentes de reconocimiento de patrones para actividades humanas. Sin embargo, la propuesta más común puede clasificarse en cinco
+categorías [9]: 
+	(i) Modelos ocultos de Markov; 
+	(ii) el campo aleatorio condicional de cadena de salto; 
+	(iii) Patrones Emergentes; 
+	(iv) el Campo Aleatorio Condicional; 
+	(v) clasificadores bayesianos
+
+De hecho, la mayoría de los autores proponen el uso de Modelos Ocultos de Markov (HMM) para modelar las actividades humanas. HMM permite modelar acciones como cadenas de Markov. Básicamente, HMM genera estados ocultos a partir de datos observables. En particular, el objetivo final de esta técnica es construir la secuencia de estados ocultos que encaje con una determinada secuencia de datos. Para finalmente definir todo el modelo, HMM debe deducir de los datos los parámetros del modelo de manera confiable. La figura 1 muestra una representación esquemática de cómo funciona HMM. Cuando se reconocen las actividades humanas, las acciones que componen las actividades son los estados ocultos y las salidas de los sensores son los datos que se estudian. HMM, además, permite el uso de técnicas de entrenamiento considerando el conocimiento previo sobre el modelo. Este entrenamiento a veces es esencial para “inducir” todas las posibles secuencias de datos requeridas para calcular el HMM. Finalmente, es muy importante tener en cuenta que los HMM aislados simples se pueden combinar para crear modelos más grandes y complejos.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.3\textwidth]{punto2.png}
+\caption{\label{fig:frog}Representación gráfica de un HMM .}
+\end{figure}
+
+Los HMM, sin embargo, son inútiles para modelar ciertas actividades concurrentes, por lo que otros autores han reportado una nueva técnica denominada Conditional Random Field (CRF). Los CRF se emplean para modelar aquellas actividades que presentan acciones concurrentes o, en general, múltiples acciones que interactúa. Además, HMM requiere un gran esfuerzo de entrenamiento para descubrir todos los estados ocultos posibles. Para resolver estos problemas, el campo aleatorio condicional (CRF) emplea probabilidades condicionales en lugar de distribuciones de probabilidad conjunta. De esa forma, se pueden modelar fácilmente actividades cuyas acciones se desarrollan en cualquier orden. A diferencia de las cadenas en HMM, CRF emplea gráficos acíclicos y permite la integración de estados ocultos condicionales (estados que dependen de observaciones pasadas y/o futuras).
+Los CRF, por otro lado, siguen siendo inútiles para modelar ciertos comportamientos, por lo que algunas propuestas generalizan este concepto y proponen el Skip Chain Conditional Random Field (SCCRF). SCCRF es una técnica de reconocimiento de patrones, más general que CRF, que permite modelar actividades que no son una secuencia de acciones en la naturaleza [14]. Esta técnica trata de capturar dependencias de largo alcance (cadena de salto); y puede entenderse como el producto de diferentes cadenas lineales. Sin embargo, al calcular este producto
+es bastante pesado y complicado, por lo que esta técnica suele ser demasiado costosa desde el punto de vista computacional para implementarla en pequeños sistemas integrados.
+Otras propuestas emplean técnicas de descripción de mayor nivel como Emerging Patterns (EP). Para la mayoría de los autores, EP es una técnica que describe actividades como vectores de parámetros y sus valores correspondientes (ubicación, objeto, etc.).  Utilizando distancias entre vectores es posible calcular y reconocer acciones desarrolladas por personas. Finalmente, otros autores han empleado con éxito técnicas secundarias como los clasificadores bayesianos, que identifican actividades haciendo una correspondencia entre las actividades humanas y las salidas más probables de los sensores mientras se realizan estas acciones, considerando que todos los sensores son independientes. Los árboles de decisión, las extensiones HMM y otras tecnologías similares también se han estudiado en la literatura, aunque estas propuestas son escasas.
+Entre todas las tecnologías descritas, HMM no es la más poderosa. Sin embargo, encaja a la perfección con la Industria 4.0, donde las actuaciones son muy complejas pero muy estructuradas y ordenadas (según protocolos de empresa, políticas de eficiencia, etc.). Además, se requiere una retroalimentación rápida (a veces incluso en tiempo real) para garantizar que los procesos impulsados por humanos funcionen correctamente antes de que ocurra una falla crítica global. Por lo tanto, las soluciones computacionalmente costosas no son un enfoque válido, y estamos seleccionando HMM como tecnología de base principal. Para preservar su carácter liviano y, al mismo tiempo, poder modelar actividades complejas, introducimos un esquema de reconocimiento de dos fases que permite dividir acciones complejas en dos pasos más simples.
 \section {Algoritmo de reconocimiento de patrones en dos fases}
+
+
+\begin{figure}
+\centering
+\includegraphics[width=0.3\textwidth]{punto3.png}
+\caption{\label{fig:frog}Arquitectura de la solución propuesta del patrón de reconocimiento.}
+\end{figure}
 \subsection{Reconocimiento de movimientos simples: Dinámicas de Deformación del Tiempo}
 \subsection{Reconocimiento de movimientos complejos: Modelos Ocultos de Markov}
+
+El mecanismo propuesto anteriormente es muy útil para reconocer acciones simples, pero
+las actividades complejas involucran una gran cantidad de variables y requieren mucho más tiempo.
+Por lo tanto, DTW tiende a volverse impreciso y se requieren modelos probabilísticos. Entre
+todos los modelos existentes, HMM es el más adecuado para escenarios industriales y procesos humanos.
+
+De la fase anterior, el universo de posibles movimientos simples a realizar
+reconocido es ℳ = {𝓂𝓂𝑖𝑖 , 𝑖𝑖 = 1, … ,𝐾𝐾}. Además, se define un universo de estados
+𝒰𝒰 = {𝑢𝑢𝑖𝑖 , 𝑖𝑖 = 1, … , 𝑄𝑄}, que describe todos los estados que las personas pueden cruzar mientras
+realizar alguna de las acciones objeto de estudio.
+
+
 \section {Validación experimental: implementación y resultados}
 Con el fin de evaluar el cumplimiento de la solución propuesta, se ha designado una validación experimental y se ha llevado a cabo. Un escenario industrial ha sido imitado en algunas salas grandes de la Universidad Politécnica de Madrid. El escenario representó a una compañia tradicional de producción de productos hechos a mano. En particular, imitaron un pequeño PCB(placa de circuito impreso) productor.
 
-Para conseguir información sobre el comportamiento de las personas, a varios participantes se les proporcionó guantes cibernéticos, incluyendo acelerómetros y un lector RFID. Los objetos cercanos al escenario fueron identificados con una etiqueta RFID, por lo que la plataforma de hardware propuesta puede identificar la posición de la mano y los objetos con los que las personas han interactuado. 
+Para conseguir información sobre el comportamiento de las personas, a varios participantes se les proporcionó guantes cibernéticos, incluyendo acelerómetros y un lector RFID. Los objetos cercanos al escenario fueron identificados con una etiqueta RFID, por lo que la plataforma de hardware propuesta puede identificar la posición de la mano y los objetos con los que las personas han interactuado.
 
-Una lista de 12 actividades diferentes fue diseñada y definida usando la tecnología propuesta. La tabla 1 describe las 12 actividades definidas, además de una breve descripción sobre ellas.
+Una lista de 12 actividades diferentes fue diseñada y definida usando la tecnología propuesta. La tabla 1 describe las 12 actividades definidas, además de una breve descripción sobre ellas. \newline
+
+\begin{table}[t]
+	\begin{center}
+		\begin{tabular}{ | p{4cm} | p{9cm} | }
+			\hline Actividad                                   & Descripción                                                                                                              \\ \hline
+			Dibujar las rutas de los circuitos                 & El circuito para ser impreso es diseñado usando un programa PC de software específico                                    \\ \hline
+			Imprimir el circuito diseñado usando un plóter     & Usando fundas externas y un plóter, el circuito diseñado es impreso                                                      \\ \hline
+			Limpiar las caras del laminado de cobre            & Usando un producto especial, todo el polvo y las partículas se eliminan de las caras del laminado de cobre               \\ \hline
+			Copiar el circuito diseñado en las caras del cobre & El circuito diseñado en las fundas externas se copia en el laminado de cobre usando una explosión de rayos ultravioletas \\ \hline
+			Sumergir las placas en la piscina con ácido        & Para eliminar lo innecesario del cobre, sumergimos las caras del laminado de cobre en un baño de ácido                   \\ \hline
+			Lavar el cobre con un baño de disolvente           & Después del baño de ácido, la superficie del cobre restante se lava con un baño de disolvente                            \\ \hline
+			Capa de alineamiento                               & PCB están compuesto de varias capas, alineadas y amontonadas durante su fase                                             \\ \hline
+			Inspección óptica                                  & Se revisa la capa de alineamiento con un láser                                                                           \\ \hline
+			Unir las capas exteriores con el sustrato          & Usando un pegamento epóxico, las capas finales y exteriores de las placas se unen                                        \\ \hline
+			Unir la placa                                      & La unión ocurre en una mesa de acero pesado con abrazaderas metálicas                                                    \\ \hline
+			Taladrar los agujeros necesarios                   & Los agujeros para componentes, etcétecera, son taladrados en el montón de placas                                         \\ \hline
+			Enchapado                                          & En un horno, la placa está lista                                                                                         \\ \hline
+		\end{tabular}
+	\end{center}
+\caption{\label{fig:frog}Tasa media de éxito para la solución propuesta.}
+\end{table}
 
 
-
+\cleardoublepage
 18 personas estuvieron involucradas en el experimento. Las personas fueron solicitadas para realizar las actividades con números aleatorios. El orden verdadero, así como el de las actividades es reconocido y almacenado por un proceso de software supervisor. La tasa global de éxito para todas las soluciones ha sido evaluada, identificando, el mismo éxito para cada una de las distintas fases.
 
 Para evaluar las mejoras obtenidas en comparación con las soluciones similares ya existentes, la misma secuencia de datos físicos ha sido empleada para alimentar la solución de un patrón estándar de reconocimiento basado solo en HMM. Usando un software de procesamiento de datos específicos, algunos resultados relevantes han sido obtenidos.
@@ -59,6 +120,6 @@ La figura 4 representa la tasa media de éxito para 3 casos: la solución global
 \section {Conclusiones y futuros trabajos}
 En este paper presentamos un nuevo patrón algorítmico de reconocimiento para integrar individuos en los sistemas de la Industria 4.0 y los procesos dirigidos por humano. El algoritmo define actividades complejas como una composición de movimientos simples. Las actividades complejas son reconocidas empleando los Modelos Ocultos de Maekov, y los movimientos simples son reconocidos utilizando las DWT. Con el fin de activar el implemento de este algoritmo incrustado en objetos pequeños, se seleccionan configuraciones ligeras. Una prueba experimental de esto es llevarlo a cabo, y los resultados muestran una mejora global en un exitoso índice del 9%.
 Los futuros trabajos considerarán metodologías más complejas para el procesamiento de datos, y la comparación para configuraciones distintas de la propuesta serán evaluadas.
-Además, la propuesta será analizada en diferentes escenarios. 
+Además, la propuesta será analizada en diferentes escenarios.
 
 \end{document}
