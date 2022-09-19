@@ -975,3 +975,73 @@ Ctrl-C to stop.
 Ctrl-C to stop.
 
 [36m[2022-09-19 21:36:09][00m [32m172.18.0.1:43690[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 21:55:06][00m [32m172.18.0.1:33934[00m was served file [35m/home/runner/pruebita/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 21:55:06][00m                            found index file for directory [35m/home/runner/pruebita[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 21:55:07][00m [32m172.18.0.1:34086[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 21:55:07][00m [32m172.18.0.1:33934[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 21:59:43][00m [32m172.18.0.1:51610[00m was served file [35m/home/runner/pruebita/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 21:59:43][00m                            found index file for directory [35m/home/runner/pruebita[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 21:59:44][00m [32m172.18.0.1:34644[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 21:59:44][00m [32m172.18.0.1:51610[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 22:07:26][00m [32m172.18.0.1:55312[00m was served file [35m/home/runner/pruebita/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:07:26][00m                            found index file for directory [35m/home/runner/pruebita[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:07:26][00m [32m172.18.0.1:48752[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:07:27][00m [32m172.18.0.1:55312[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 22:09:21][00m [32m172.18.0.1:52714[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:09:21][00m [32m172.18.0.1:49364[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:14:44][00m [32m172.18.0.1:50932[00m was served file [35m/home/runner/pruebita/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:14:44][00m                            found index file for directory [35m/home/runner/pruebita[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:14:44][00m [32m172.18.0.1:50932[00m requested to [31mGET[00m nonexistent entity [35m/home/runner/pruebita/main.pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:14:44][00m                            encoded as gzip for 519.3% ratio[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 22:15:04][00m [32m172.18.0.1:40496[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:15:04][00m [32m172.18.0.1:38606[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 22:16:30][00m [32m172.18.0.1:38068[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:16:31][00m [32m172.18.0.1:40182[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:17:33][00m [32m172.18.0.1:36212[00m requested to [31mGET[00m nonexistent entity [35m/home/runner/pruebita/main.pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:17:33][00m                            encoded as gzip for 519.3% ratio[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 22:18:26][00m [32m172.18.0.1:57930[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:18:26][00m [32m172.18.0.1:45436[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 22:19:56][00m [32m172.18.0.1:54956[00m was served file [35m/home/runner/pruebita/index.html[00m as [34mtext/html[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:19:56][00m                            found index file for directory [35m/home/runner/pruebita[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:19:56][00m [32m172.18.0.1:50712[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:19:56][00m [32m172.18.0.1:54956[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 22:21:02][00m [32m172.18.0.1:39654[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:21:03][00m [32m172.18.0.1:57504[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 22:23:46][00m [32m172.18.0.1:41840[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:23:46][00m Created temp dir [35m$TEMP/http-home-runner-pruebita/encoded[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:23:47][00m [32m172.18.0.1:60576[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[00mHosting "." on port 8000 without TLS and no authentication...
+Ctrl-C to stop.
+
+[36m[2022-09-19 22:24:03][00m [32m172.18.0.1:55470[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m
+[36m[2022-09-19 22:24:03][00m [32m172.18.0.1:42362[00m was served file [35m/home/runner/pruebita/main.pdf[00m as [34mapplication/pdf[00m[30m[31m[32m[33m[34m[35m[36m[37m[00m

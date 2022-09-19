@@ -1,9 +1,8 @@
-
 \documentclass{article}
 
 % Language setting
 % Replace `english' with e.g. `spanish' to change the document language
-\usepackage[english]{babel}
+\usepackage[spanish]{babel}
 
 % Set page size and margins
 % Replace `letterpaper' with `a4paper' for UK/EU standard size
@@ -12,108 +11,36 @@
 % Useful packages
 \usepackage{amsmath}
 \usepackage{graphicx}
+\usepackage{amssymb}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 
-\title{Your Paper}
-\author{You}
+\title {\textbf{El algoritmo de dos fases para el reconocimiento de actividades en el contexto de la Industria 4.0 y los procesos dirigidos por humanos
+}}
+\author{Borja Bordel1, Ramón Alcarria1, Diego Sánchez-de-Rivera1 1Universidad Politécnica de Madrid, Madrid, España bbordel@dit.upm.es, ramon.alcarria@upm.es, diegosanchez@dit.upm.es}
 
 \begin{document}
 \maketitle
 
 \begin{abstract}
-Your abstract.
+Los futuros sistemas de industria, la revolución conocida como la Industria 4.0, están considerando integrar gente en el mundo de Internet como potenciales prosumidores (entre proveedores de servicios y consumidores). En este contexto, el trabajo dirigido por humanos aprece como una realidad esencial y los instrumentos para generar bucles  de información que se retroalimentan entre el subsistema social (personas) y el subsistema cibernético (componentes tecnológicas) son necesarios. A pesar de que muchos instrumentos distintos han sido propuestos, a día de hoy las técnicas de reconocimiento de patrones son las más prometedoras. Sin embargo, estas soluciones presentan algunos problemas pendientes. Por ejemplo, estos dependen del hadware seleccionado para obtener información de los usuarios; o presentan límites en el proceso de identificación. Para abordar esta situación, en este paper se propone un algoritmo de dos fases para integrar a las personas en los sistemas de la Industria 4.0. El algoritmo define acciones complejas como una composición de simples movimientos. Las acciones complejas son reconocidas utilizando los Movimientos Ocultos de Markov, y solo los movimientos simples se reconocen a través la DWT . De este modo, solo los movimientos dependen de los recursos de hadrdware empleados para capturar información, y se incrementa  la precisión en el reconocimiento de acciones complejas. Una validación experimental será también llevada a cabo para evaluar y comparar la interpretación de los resultados propuestos.
+Palabras clave: Industria 4.0; reconocimiento de patrones; DWT; Inteligencia Artificial; Modelos Ocultos de Markov.
 \end{abstract}
 
-\section{Introduction}
-
-Your introduction goes here! Simply start writing your document and use the Recompile button to view the updated PDF preview. Examples of commonly used commands and features are listed below, to help you get started.
-
-Once you're familiar with the editor, you can find various project settings in the Overleaf menu, accessed via the button in the very top left of the editor. To view tutorials, user guides, and further documentation, please visit our \href{https://www.overleaf.com/learn}{help library}, or head to our plans page to \href{https://www.overleaf.com/user/subscription/plans}{choose your plan}.
-
-\section{Some examples to get started}
-
-\subsection{How to create Sections and Subsections}
-
-Simply use the section and subsection commands, as in this example document! With Overleaf, all the formatting and numbering is handled automatically according to the template you've chosen. If you're using Rich Text mode, you can also create new section and subsections via the buttons in the editor toolbar.
-
-\subsection{How to include Figures}
-
-First you have to upload the image file from your computer using the upload link in the file-tree menu. Then use the includegraphics command to include it in your document. Use the figure environment and the caption command to add a number and a caption to your figure. See the code for Figure \ref{fig:frog} in this section for an example.
-Note that your figure will automatically be placed in the most appropriate place for it, given the surrounding text and taking into account other figures or tables that may be close by. You can find out more about adding images to your documents in this help article on \href{https://www.overleaf.com/learn/how-to/Including_images_on_Overleaf}{including images on Overleaf}.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.3\textwidth]{frog.jpg}
-\caption{\label{fig:frog}This frog was uploaded via the file-tree menu.}
-\end{figure}
-
-\subsection{How to add Tables}
-
-Use the table and tabular environments for basic tables --- see Table~\ref{tab:widgets}, for example. For more information, please see this help article on \href{https://www.overleaf.com/learn/latex/tables}{tables}. 
-
-\begin{table}
-\centering
-\begin{tabular}{l|r}
-Item & Quantity \\\hline
-Widgets & 42 \\
-Gadgets & 13
-\end{tabular}
-\caption{\label{tab:widgets}An example table.}
-\end{table}
-
-\subsection{How to add Comments and Track Changes}
-
-Comments can be added to your project by highlighting some text and clicking ``Add comment'' in the top right of the editor pane. To view existing comments, click on the Review menu in the toolbar above. To reply to a comment, click on the Reply button in the lower right corner of the comment. You can close the Review pane by clicking its name on the toolbar when you're done reviewing for the time being.
-
-Track changes are available on all our \href{https://www.overleaf.com/user/subscription/plans}{premium plans}, and can be toggled on or off using the option at the top of the Review pane. Track changes allow you to keep track of every change made to the document, along with the person making the change. 
-
-\subsection{How to add Lists}
-
-You can make lists with automatic numbering \dots
-
-\begin{enumerate}
-\item Like this,
-\item and like this.
-\end{enumerate}
-\dots or bullet points \dots
-\begin{itemize}
-\item Like this,
-\item and like this.
-\end{itemize}
-
-\subsection{How to write Mathematics}
-
-\LaTeX{} is great at typesetting mathematics. Let $X_1, X_2, \ldots, X_n$ be a sequence of independent and identically distributed random variables with $\text{E}[X_i] = \mu$ and $\text{Var}[X_i] = \sigma^2 < \infty$, and let
-\[S_n = \frac{X_1 + X_2 + \cdots + X_n}{n}
-      = \frac{1}{n}\sum_{i}^{n} X_i\]
-denote their mean. Then as $n$ approaches infinity, the random variables $\sqrt{n}(S_n - \mu)$ converge in distribution to a normal $\mathcal{N}(0, \sigma^2)$.
-
-
-\subsection{How to change the margins and paper size}
-
-Usually the template you're using will have the page margins and paper size set correctly for that use-case. For example, if you're using a journal article template provided by the journal publisher, that template will be formatted according to their requirements. In these cases, it's best not to alter the margins directly.
-
-If however you're using a more general template, such as this one, and would like to alter the margins, a common way to do so is via the geometry package. You can find the geometry package loaded in the preamble at the top of this example file, and if you'd like to learn more about how to adjust the settings, please visit this help article on \href{https://www.overleaf.com/learn/latex/page_size_and_margins}{page size and margins}.
-
-\subsection{How to change the document language and spell check settings}
-
-Overleaf supports many different languages, including multiple different languages within one document. 
-
-To configure the document language, simply edit the option provided to the babel package in the preamble at the top of this example project. To learn more about the different options, please visit this help article on \href{https://www.overleaf.com/learn/latex/International_language_support}{international language support}.
-
-To change the spell check language, simply open the Overleaf menu at the top left of the editor window, scroll down to the spell check setting, and adjust accordingly.
-
-\subsection{How to add Citations and a References List}
-
-You can simply upload a \verb|.bib| file containing your BibTeX entries, created with a tool such as JabRef. You can then cite entries from it, like this: \cite{greenwade93}. Just remember to specify a bibliography style, as well as the filename of the \verb|.bib|. You can find a \href{https://www.overleaf.com/help/97-how-to-include-a-bibliography-using-bibtex}{video tutorial here} to learn more about BibTeX.
-
-If you have an \href{https://www.overleaf.com/user/subscription/plans}{upgraded account}, you can also import your Mendeley or Zotero library directly as a \verb|.bib| file, via the upload menu in the file-tree.
-
-\subsection{Good luck!}
-
-We hope you find Overleaf useful, and do take a look at our \href{https://www.overleaf.com/learn}{help library} for more tutorials and user guides! Please also let us know if you have any feedback using the Contact Us link at the bottom of the Overleaf menu --- or use the contact form at \url{https://www.overleaf.com/contact}.
-
-\bibliographystyle{alpha}
-\bibliography{sample}
+\section{Introducción}
+La Industria 4.0 [1] se basa en el uso sistemas Ciber-Físicos (uniones de procesos físicos y cibernéticos) [2] como componente tecnológica principal para futuras soluciones digitales, sobre todo  ( pero no únicamente) en el ámbito industrial. Por lo general, la digitalización ha causado, al final, el remplazo de los métodos tradicionales de trabajo por nuevos instrumentos digitales.
+Por ejemplo, los trabajadores en producción en cadena fueron sustituidos por robots durante la tercera revolución industrial.
+Sin embargo, algunas aplicaciones industriales no pueden basarse en soluciones tecnológicas, por lo que la mano de obra se vuelve esencial [3].  Los productos hechos a mano son un ejemplo que reflejan la importancia del trabajo humano. Estos sectores de la industria, en cualquier caso, deben integrarse en la cuarta revolución industrial. Desde la unión de los Sistemas Ciber-Físicos (CPS) y el papel de las personas como proveedores de servicios (trabajos activos), surgen los CPS humanizados[4]. En estos nuevos sistemas, los procesos dirigidos por humanos están permitidos; los procesos[5] i.e. que son conocidos, ejecutados y controlados por gente (aunque serán supervisados a través de mecanismos digitales).
+Para una verdadera integración entre la gente y la tecnología, que elemine los procesos de ejecución humana o tecnológica, para lo que se requieren técnicas de extración de información. Durante los últimos años se han citado distintos métodos posibles, pero a día de hoy las técnicas de reconocimiento de patrones parecen las más promentedoras.
+El uso de la IA, modelos estadísticos y recursos similares ha permitido un increíble desarrollo de los métodos de reconocimiento de patrones, aunque todavía quedan retos pendientes.
+Inicialmente, las técnicas de reconocimiento de patrones dependen del hardware subyacente para la captura de información. La estructura y la memorización varía si (por ejemplo)   empleamos sensores de infrarrojos en vez de acelerómetros. Es muy problemática la velocicidad de evolución de las tecnologías hardware con respecto al software. 
+Por otro lado, existe un límite en la precisión del reconocimiento de procesos. De hecho, con las acciones humanas se vuelve más complicado, ya que se requieren más variables y modelos complejos para su reconocimiento. Esta aproximación genera grandes problemas de optimización con un error que aumenta al incrementar el número de variables, lo que provoca un decrecimiento del índice de reconocimiento[6]. En conclusión, las matemáticas (-------) aportan una cierta precisión al proceso de reconocimiento de patrones dando medidas para estudiar. Para evitar esta situación, deben ser consideradas menos variables. lo que reduce la complejidad del problema a la hora de analizarlo, una solución que no es aceptable en los ámbitos de la industria donde se desarrollan actividades de producción complejas.
+Por lo tanto, el objetivo de este paper es describir un nuevo algoriitmo de reconocimiento de patrones dirigido a estos dos problrmas. El mecanismo propuesto define las acciones como una composición de movimientos simples. Estos se reconocen utilizando las técnicas de Deformación Dinámica del Tiempo (DTW) [7]. Este proceso depende del hardware empleado para la captura de información; pero las DTW son flexibles y la actualización del repositorio de reconocimiento es suficiente para configurar el algoritmo completo. Por otro lado, las acciones complejas son reconocidas como una combinación de movimientos simples a través de los Modelos Ocultos de Markov. HMM) [8]. Estos son totalmente independientes de la tecnología hardware , ya que solo consideran acciones simples. Estas dos fases  se aproximan y reducen la complejidad de los modelos, incrementando la precisión y el éxito del índice ene en el reconocimiento de patrones.
+El resto del paper se organiza como sigue: en la Sección 2 se describe el funcionamiento del reconocimiento de patrones para actividades humanas; en la Sección 3 se describe la solución propuesta, incluyrndo las dos fases definidas; la Sección 4 presenta una prueba  experimental utilizando un escenario real; y la en la sección se concluye el paper.
+\section {Validación experimental: implementación y resultados}
+\section {Algoritmo de reconocimiento de patrones en dos fases}
+\subsection{d}
+\subsection{f}
+\section {Validación experimental: implementación y resultados}
+\section {Conclusiones y futuros trabajos}
 
 \end{document}
