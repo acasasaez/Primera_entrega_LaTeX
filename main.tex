@@ -9,6 +9,7 @@
 \usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 
 % Useful packages
+\usepackage{ragged2e}
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{amssymb}
@@ -16,11 +17,10 @@
 
 \title {\textbf{El algoritmo de dos fases para el reconocimiento de actividades en el contexto de la Industria 4.0 y los procesos dirigidos por humanos
 }}
-\author{Borja Bordel1, Ramón Alcarria1, Diego Sánchez-de-Rivera1 1Universidad Politécnica de Madrid, Madrid, España bbordel@dit.upm.es, ramon.alcarria@upm.es, diegosanchez@dit.upm.es}
+\author{ Borja Bordel, Ramón Alcarria1, Diego Sánchez-de-Rivera1 1Universidad Politécnica de Madrid, Madrid, España bbordel@dit.upm.es, ramon.alcarria@upm.es, diegosanchez@dit.upm.es}
 
 \begin{document}
 \maketitle
-
 \begin{abstract}
 	Los futuros sistemas de industria, la revolución conocida como la Industria 4.0, están considerando integrar gente en el mundo de Internet como potenciales prosumidores (entre proveedores de servicios y consumidores). En este contexto, el trabajo dirigido por humanos aprece como una realidad esencial y los instrumentos para generar bucles  de información que se retroalimentan entre el subsistema social (personas) y el subsistema cibernético (componentes tecnológicas) son necesarios. A pesar de que muchos instrumentos distintos han sido propuestos, a día de hoy las técnicas de reconocimiento de patrones son las más prometedoras. Sin embargo, estas soluciones presentan algunos problemas pendientes. Por ejemplo, estos dependen del hadware seleccionado para obtener información de los usuarios; o presentan límites en el proceso de identificación. Para abordar esta situación, en este paper se propone un algoritmo de dos fases para integrar a las personas en los sistemas de la Industria 4.0. El algoritmo define acciones complejas como una composición de simples movimientos. Las acciones complejas son reconocidas utilizando los Movimientos Ocultos de Markov, y solo los movimientos simples se reconocen a través la DWT . De este modo, solo los movimientos dependen de los recursos de hadrdware empleados para capturar información, y se incrementa  la precisión en el reconocimiento de acciones complejas. Una validación experimental será también llevada a cabo para evaluar y comparar la interpretación de los resultados propuestos.
 	Palabras clave: Industria 4.0; reconocimiento de patrones; DWT; Inteligencia Artificial; Modelos Ocultos de Markov.
@@ -47,7 +47,7 @@ categorías [9]:
 
 De hecho, la mayoría de los autores proponen el uso de Modelos Ocultos de Markov (HMM) para modelar las actividades humanas. HMM permite modelar acciones como cadenas de Markov. Básicamente, HMM genera estados ocultos a partir de datos observables. En particular, el objetivo final de esta técnica es construir la secuencia de estados ocultos que encaje con una determinada secuencia de datos. Para finalmente definir todo el modelo, HMM debe deducir de los datos los parámetros del modelo de manera confiable. La figura 1 muestra una representación esquemática de cómo funciona HMM. Cuando se reconocen las actividades humanas, las acciones que componen las actividades son los estados ocultos y las salidas de los sensores son los datos que se estudian. HMM, además, permite el uso de técnicas de entrenamiento considerando el conocimiento previo sobre el modelo. Este entrenamiento a veces es esencial para “inducir” todas las posibles secuencias de datos requeridas para calcular el HMM. Finalmente, es muy importante tener en cuenta que los HMM aislados simples se pueden combinar para crear modelos más grandes y complejos.
 
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.3\textwidth]{punto2.png}
 \caption{\label{fig:frog}Representación gráfica de un HMM .}
@@ -60,34 +60,77 @@ Otras propuestas emplean técnicas de descripción de mayor nivel como Emerging 
 Entre todas las tecnologías descritas, HMM no es la más poderosa. Sin embargo, encaja a la perfección con la Industria 4.0, donde las actuaciones son muy complejas pero muy estructuradas y ordenadas (según protocolos de empresa, políticas de eficiencia, etc.). Además, se requiere una retroalimentación rápida (a veces incluso en tiempo real) para garantizar que los procesos impulsados por humanos funcionen correctamente antes de que ocurra una falla crítica global. Por lo tanto, las soluciones computacionalmente costosas no son un enfoque válido, y estamos seleccionando HMM como tecnología de base principal. Para preservar su carácter liviano y, al mismo tiempo, poder modelar actividades complejas, introducimos un esquema de reconocimiento de dos fases que permite dividir acciones complejas en dos pasos más simples.
 \section {Algoritmo de reconocimiento de patrones en dos fases}
 
+Con el fin de (i) independizar el proceso de reconocimiento de patrones de usar aparatos de hardware para capturar información, (ii) permitir el reconocimiento de movimientos complejos, y (iii) preservar el carácter ligero de los modelos seleccionados, la solución propuesta una arquitectura con 3 capas tal que:
 
-\begin{figure}
+
+\begin{figure}[h]
 \centering
 \includegraphics[width=0.3\textwidth]{punto3.png}
 \caption{\label{fig:frog}Arquitectura de la solución propuesta del patrón de reconocimiento.}
 \end{figure}
+
+La capa más baja incluye la plataforma de hardware. Dispositivos de vigilancia como
+acelerómetros, teléfonos, sensores infrarrojos, etiquetas RFID, etc., se implementan para
+capturar información sobre el comportamiento de las personas. Las salidas de estos dispositivos crean
+secuencias de datos físicos cuyo formato, rango dinámico, etc., dependen totalmente de
+las tecnologías de hardware seleccionadas.
+
+Estas secuencias de datos físicos luego se procesan en la capa intermedia usando tecnicas de DTW. Como resultado, para cada secuencia de datos físicos, un simple movimiento o acción es reconocido. Estos movimientos simples se representan usando un formato de datos binarios para hacer la solución lo menos pesada posible. El software de este nivel debe modificarse cada vez que se actualiza la plataforma de hardware, pero las tecnologías DTW no requieren de un gran proceso de actualización, y actualizar el repositorio de patrones es suficiente para configurar el
+algoritmo en este nivel.
+
+Los movimientos simples reconocidos se agrupan para crear secuencias de datos lógicos. Estas secuencias alimentan un sistema de reconocimiento de patrones de alto nivel basado en los modelos ocultos de Markov. En este nivel, los componentes de software requieren un fuerte proceso de entrenamiento, pero la capa intermedia hace totalmente independiente la plataforma de hardware y de modelos de alto nivel. Por lo tanto, cualquier cambio en la plataforma de hardware no impone una actualización en el HMM, lo que sería extremadamente costoso computacionalmente. Por el análisis de
+la secuencia de movimientos simples, se reconocen acciones complejas.
+La siguiente subsección describe en detalle las dos fases de reconocimiento de patrones propuestas.
+
 \subsection{Reconocimiento de movimientos simples: Dinámicas de Deformación del Tiempo}
 \subsection{Reconocimiento de movimientos complejos: Modelos Ocultos de Markov}
 
-El mecanismo propuesto anteriormente es muy útil para reconocer acciones simples, pero
-las actividades complejas involucran una gran cantidad de variables y requieren mucho más tiempo.
-Por lo tanto, DTW tiende a volverse impreciso y se requieren modelos probabilísticos. Entre
-todos los modelos existentes, HMM es el más adecuado para escenarios industriales y procesos humanos.
+El mecanismo propuesto anteriormente es muy útil para reconocer acciones simples, pero las actividades complejas involucran una gran cantidad de variables y requieren mucho más tiempo.
+Por lo tanto, DTW tiende a volverse impreciso y se requieren modelos probabilísticos. Entre todos los modelos existentes, HMM es el más adecuado para escenarios industriales y procesos humanos.
 
-De la fase anterior, el universo de posibles movimientos simples a realizar
-reconocido es ℳ = {𝓂𝓂𝑖𝑖 , 𝑖𝑖 = 1, … ,𝐾𝐾}. Además, se define un universo de estados
-𝒰𝒰 = {𝑢𝑢𝑖𝑖 , 𝑖𝑖 = 1, … , 𝑄𝑄}, que describe todos los estados que las personas pueden cruzar mientras
-realizar alguna de las acciones objeto de estudio.
+De la fase anterior, la infinidad de posibles movimientos simples de ser reconocidos es $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$. Además, se define un universo de estados  $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$, describiendo todos los estados que las personas pueden atravesar mientras interpretan cualquier acción bajo un estudio previo.
 
+
+
+Entonces, una serie de observaciones $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$ (movimientos simples reconocidos en la fase anterior) han sido consideradas, además de la secuencia de estados  $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$ describiendo la acción para ser modelada por HMM. En este caso inicial, asumimos cada observación correspondiente a un nuevo estado, asi que  $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$. Entonces, 3 matrices son calculadas: (i) la matriz transitoria A (10) describiendo la probabilidad del estado(uj) siguiendo el estado (ui); (ii) la matriz de observación (11) describiendo la probabilidad de observación(oj) causada por el estado (uj) independientemente de k; y (iii) la matriz de probabilidad inicial(12).
+
+\begin{equation}A  =\left[a_\imath ,\jmath \right] \ \ a\imath ,\jmath = P\left(v_k = u\jmath \ | \ v_k-1 = u\imath  \right)\end{equation}
+
+\begin{equation}B  =\left[b_\jmath \left(o_\imath \right)  \right] \ \ b_\jmath \left(o_\imath \right)  = P\left(x_k = o_\imath | v_k = u_\jmath  \right)  \end{equation}
+
+\begin{equation}\prod =\left[\pi_\imath \right] \ \ \pi_\imath = P\left(v_1= u_1\right)  \end{equation}
+
+Entonces, el HMM para cada actividad compleja(landai) para ser reconocida se describe gracias a estos 3 elementos previos(13).
+\begin{equation}\lambda i=\left\{A\imath ,B_\jmath ,\prod_i  \right\}\end{equation}
+
+Además, se hacen dos supuestos: (i) el de Markov(14) mostrando que cualquier estado depende solo del anterior; y (15) el de independencia, afirmando que cualquier secuencia de observación depende sólo del estado presente, no de estados previos u observaciones.
+
+
+\begin{equation} P\left(v_k | v_1, ... , v_{k-1}\right) \ = \ P\left(v_k \ | \ v_{k-1}\right)  \end{equation}
+
+\begin{equation}P\left(o_k \ | \ o_1, ..., o_{k-1}, v_1,...,v_k\right) = P\left(o_k \ | \  v_k\right)\end{equation}
+
+Para evaluar el modelo y reconocer la actividad que están realizando los usuarios, en este papel estamos utilizando un enfoque tradicional(16). Aunque los algoritmos directos han demostrado ser más eficientes, para este trabajo inicial estamos implementando directamente la expresión de evaluación en su forma tradicional.
+
+16
+
+El proceso de aprendizaje también se implementó en su forma más sencilla. Estadístico se emplearon definiciones para matriz transitoria, matriz de observación y matriz inicial.
+matriz de probabilidad. En particular, se empleó la definición de probabilidad de Laplace estimar estas tres matrices a partir de estadísticas sobre las actividades en estudio(17-19). El símbolo(·) indica el número de veces que ocurre.
+
+\begin{equation} a_{\imath\jmath}  = P\left(u_\jmath  | u_\imath \right) = \frac{contar\left(u_\jmath \ seguido \ de \ u_\imath  \right) }{contar\left(u_\jmath \right) } \end{equation}
+
+\begin{equation}b_\jmath\left(o_\imath \right) = P\left(o_i \ | \ u_\jmath \right)  = \frac{contar\left(o_\imath \ esta \ observado \  en \  el \  estado \ u_\jmath \right) }{contar\left(u_\jmath \right) }  \end{equation}
+
+\begin{equation}\pi_\imath  = P\left(v_1 = u_\imath \right) = \frac{contar \ \left(v_1 = u_\imath \right)  }{contar\left(v_1\right) }  \end{equation}
 
 \section {Validación experimental: implementación y resultados}
 Con el fin de evaluar el cumplimiento de la solución propuesta, se ha designado una validación experimental y se ha llevado a cabo. Un escenario industrial ha sido imitado en algunas salas grandes de la Universidad Politécnica de Madrid. El escenario representó a una compañia tradicional de producción de productos hechos a mano. En particular, imitaron un pequeño PCB(placa de circuito impreso) productor.
 
 Para conseguir información sobre el comportamiento de las personas, a varios participantes se les proporcionó guantes cibernéticos, incluyendo acelerómetros y un lector RFID. Los objetos cercanos al escenario fueron identificados con una etiqueta RFID, por lo que la plataforma de hardware propuesta puede identificar la posición de la mano y los objetos con los que las personas han interactuado.
 
-Una lista de 12 actividades diferentes fue diseñada y definida usando la tecnología propuesta. La tabla 1 describe las 12 actividades definidas, además de una breve descripción sobre ellas. \newline
+Una lista de 12 actividades diferentes fue diseñada y definida usando la tecnología propuesta. La tabla 1 describe las 12 actividades definidas, además de una breve descripción sobre ellas. 
 
-\begin{table}[t]
+\begin{table}[h]
 	\begin{center}
 		\begin{tabular}{ | p{4cm} | p{9cm} | }
 			\hline Actividad                                   & Descripción                                                                                                              \\ \hline
@@ -109,7 +152,6 @@ Una lista de 12 actividades diferentes fue diseñada y definida usando la tecnol
 \end{table}
 
 
-\cleardoublepage
 18 personas estuvieron involucradas en el experimento. Las personas fueron solicitadas para realizar las actividades con números aleatorios. El orden verdadero, así como el de las actividades es reconocido y almacenado por un proceso de software supervisor. La tasa global de éxito para todas las soluciones ha sido evaluada, identificando, el mismo éxito para cada una de las distintas fases.
 
 Para evaluar las mejoras obtenidas en comparación con las soluciones similares ya existentes, la misma secuencia de datos físicos ha sido empleada para alimentar la solución de un patrón estándar de reconocimiento basado solo en HMM. Usando un software de procesamiento de datos específicos, algunos resultados relevantes han sido obtenidos.
@@ -121,5 +163,8 @@ La figura 4 representa la tasa media de éxito para 3 casos: la solución global
 En este paper presentamos un nuevo patrón algorítmico de reconocimiento para integrar individuos en los sistemas de la Industria 4.0 y los procesos dirigidos por humano. El algoritmo define actividades complejas como una composición de movimientos simples. Las actividades complejas son reconocidas empleando los Modelos Ocultos de Maekov, y los movimientos simples son reconocidos utilizando las DWT. Con el fin de activar el implemento de este algoritmo incrustado en objetos pequeños, se seleccionan configuraciones ligeras. Una prueba experimental de esto es llevarlo a cabo, y los resultados muestran una mejora global en un exitoso índice del 9%.
 Los futuros trabajos considerarán metodologías más complejas para el procesamiento de datos, y la comparación para configuraciones distintas de la propuesta serán evaluadas.
 Además, la propuesta será analizada en diferentes escenarios.
+
+
+
 
 \end{document}
