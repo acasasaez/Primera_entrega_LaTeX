@@ -83,16 +83,36 @@ la secuencia de movimientos simples, se reconocen acciones complejas.
 La siguiente subsección describe en detalle las dos fases de reconocimiento de patrones propuestas.
 
 \subsection{Reconocimiento de movimientos simples: Dinámicas de Deformación del Tiempo}
+Para reconocer gestos o movimientos simples, se han seleccionado las técnicas de Deformación Dinámica del Tiempo. Estas tecnologías cumplen con los requisitos de los componentes de software de nivel medio, ya que se adaptan muy bien a las características de la plataforma de hardware facilmente y son más rápidas y eficientes.(así los aparatos instegrados las implementan).
+En nuestra solución, el comportamiento humano se motriza a través de la familia de sensores simbolo S, conteniendo las Ns componentes (1).
+
+
+Las salidas de estos sensores se muestran periódicamente como Ts: obteniendo para cada instante de tiempo, t, un vector de  Ns valores (cada valor de cada sensor). Este vector  Yt se llama “muestra multidimensional simple” (2).
+
+
+Después, un movimiento simple Y tendrá una duración de  Tm  segundos y se describirápor la secuencia temporal de Nm muestras multidimensionales recogidas durante ese tiempo (3). Para el reconocimiento de movimientos tardíos, se crea un repositorio de patrón símbolo R que contienen las secuencias temporales correspondientes para cada una de las acciones simples de K para reconocerlas (4). 
+
+
+Por lo general,la gente realiza movimientos de un modo similar pero diferente. Por esto, las transicioens deben ser lentas o rápidas, algunas acciones elementales deben ser añadidas o eliminadas etc. Por lo tanto, dando una secuencia X  Nx muestras, representando un movimiento para ser reconocido,deben estar localizadas en el patrón  Ri ⋲ simbolo R mas cercano a X; por lo que Ri se reconoce como una acción realizada. Para hacer esto se define la función distancia (5). Esta función que se aplica para calcular el valor de la matriz, necesitamuestras que muchas veces no tienen la misma longitud ni están alineadas(6).
+
+En los sensores de posición (acelerómetros, aparatos de infrarrojos, etc) la función distancia es directamente aplicada a los sensores de salida (lo contrario ocurre, por ejemplo, en los micrófonos donde las salidas deben ser evaluadas en la carga deldominio). Aunque también pueden utilizarse otras funciones distancia (La divergencia simétrica de Kullbabk-Leibler o la distacncia Manhattan), para este primer trabajo se utilizan las distancias Euclideas estándar (7).
+
+
+Después, se define la ruta de deformación p = (p1,p2…pL) como una secuencia de pares (nl, ml) con (nl, ml) ⋲ [1,Nx]X[1,Nm] y l ⋲ [1,L], satisfaciendo las trés condiciones: (i) el límite, i.e. p1= [1,1] y pL =[Nx,Nm];(ii) la monotonía , i.e. n1≤n2...≤nL y m1≤m2≤…≤mL; y (iii) la condición de intensidad de paso i.e. pl-p(l-1) ⋲ {(1,0), (0,1), (1,1)} con l⋲[1, L-1].
+Luego, el valor total de la ruta pi se calcula añadiendo todos los valores o distancias parciales (8). Con todo esto, la distancia entre dos secuencias de datos Ri y X se define como el valor (distancia) da la ruta más óptima (9).
+
+Finalmente, el movimiento simple es reconocidopor la secuencia de datos X que es el que tiene el patrón Ri menor distancia (el más cercano) a X. Esta descripción es transigente con las variaciones de velocidad en la ejecución de movimientos, la intreoducción de nuevos microgestos, etc. Además,como se puede ver, cuando un hardware diferente se desplega, esto basta para actualizar el repositorio de la ruta simbolo R para reconfigurar toda la solución al patrón de reconocimiento ( ya que no se requiere entrenamiento).
+
 \subsection{Reconocimiento de movimientos complejos: Modelos Ocultos de Markov}
 
 El mecanismo propuesto anteriormente es muy útil para reconocer acciones simples, pero las actividades complejas involucran una gran cantidad de variables y requieren mucho más tiempo.
 Por lo tanto, DTW tiende a volverse impreciso y se requieren modelos probabilísticos. Entre todos los modelos existentes, HMM es el más adecuado para escenarios industriales y procesos humanos.
 
-De la fase anterior, la infinidad de posibles movimientos simples de ser reconocidos es $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$. Además, se define un universo de estados  $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$, describiendo todos los estados que las personas pueden atravesar mientras interpretan cualquier acción bajo un estudio previo.
+De la fase anterior, la infinidad de posibles movimientos simples de ser reconocidos es $\mathcal{M} =  \left\lbrace \ m_i,\ i=1,\cdots , \ K \right\rbrace$. Además, se define un universo de estados  $\mathcal{U} =  \left\lbrace \ u_i,\ i=1,\cdots , \ Q \right\rbrace$, describiendo todos los estados que las personas pueden atravesar mientras interpretan cualquier acción bajo un estudio previo.
 
 
 
-Entonces, una serie de observaciones $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$ (movimientos simples reconocidos en la fase anterior) han sido consideradas, además de la secuencia de estados  $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$ describiendo la acción para ser modelada por HMM. En este caso inicial, asumimos cada observación correspondiente a un nuevo estado, asi que  $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$. Entonces, 3 matrices son calculadas: (i) la matriz transitoria A (10) describiendo la probabilidad del estado(uj) siguiendo el estado (ui); (ii) la matriz de observación (11) describiendo la probabilidad de observación(oj) causada por el estado (uj) independientemente de k; y (iii) la matriz de probabilidad inicial(12).
+Entonces, una serie de observaciones $\mathcal{O} =  \left\lbrace \ o_i,\ i=1,\cdots , \ Z_o \right\rbrace$ (movimientos simples reconocidos en la fase anterior) han sido consideradas, además de la secuencia de estados  $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$ describiendo la acción para ser modelada por HMM. En este caso inicial, asumimos cada observación correspondiente a un nuevo estado, asi que  $\mathcal{S} =  \left\lbrace \ s_i,\ i=1,\cdots , \ N_s \right\rbrace$. Entonces, 3 matrices son calculadas: (i) la matriz transitoria A (10) describiendo la probabilidad del estado(uj) siguiendo el estado (ui); (ii) la matriz de observación (11) describiendo la probabilidad de observación(oj) causada por el estado (uj) independientemente de k; y (iii) la matriz de probabilidad inicial(12).
 
 \begin{equation}A  =\left[a_\imath ,\jmath \right] \ \ a\imath ,\jmath = P\left(v_k = u\jmath \ | \ v_k-1 = u\imath  \right)\end{equation}
 
