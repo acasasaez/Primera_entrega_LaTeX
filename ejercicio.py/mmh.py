@@ -36,4 +36,12 @@ class HMM():
         """ P( entire observation sequence | A, B, pi ) """
         return np.sum(self._forward(obs_seq)[:,-1])
 
-    
+
+    def state_path(self, obs_seq):
+        V, prev = self.viterbi(obs_seq)
+
+        # Build state path with greatest probability
+        last_state = np.argmax(V[:,-1])
+        path = list(self.build_viterbi_path(prev, last_state))
+
+        return V[last_state,-1], reversed(path)
