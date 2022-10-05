@@ -20,3 +20,19 @@ emission_probability = {
 }
 
 
+def generate_index_map(lables):
+    index_label = {}
+    label_index = {}
+    i = 0
+    for l in lables:
+        index_label[i] = l
+        label_index[l] = i
+        i += 1
+    return label_index, index_label
+
+
+states_label_index, states_index_label = generate_index_map(states)
+observations_label_index, observations_index_label = generate_index_map(observations)
+
+print (states_label_index)
+print (states_index_label)
