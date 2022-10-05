@@ -44,3 +44,10 @@ def convert_observations_to_index(observations, label_index):
     for o in observations:
         list.append(label_index[o])
     return list
+
+def convert_map_to_vector(map, label_index):
+    v = np.empty(len(map), dtype=float)
+    for e in map:
+        v[label_index[e]] = map[e]
+    return v
+
