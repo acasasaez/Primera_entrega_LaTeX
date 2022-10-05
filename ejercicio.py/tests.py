@@ -64,5 +64,15 @@ B = convert_map_to_matrix(emission_probability, states_label_index, observations
 #print (B)
 observations_index = convert_observations_to_index(observations, observations_label_index)
 pi = convert_map_to_vector(start_probability, states_label_index)
-print (pi)
+#print (pi)
 
+h = HMM(A, B, pi)
+V, p = h.viterbi(observations_index)
+print (" " * 7, " ".join(("%10s" % observations_index_label[i]) for i in observations_index))
+for s in range(0, 2):
+    print ("%7s: " % states_index_label[s] + " ".join("%10s" % ("%f" % v) for v in V[s]))
+print ('\n The most possible states and probability are:')
+p, ss = h.state_path(observations_index)
+for s in ss:
+    print (states_index_label[s],)
+print(p) 
