@@ -61,4 +61,8 @@ def convert_map_to_matrix(map, label_index1, label_index2):
 A = convert_map_to_matrix(transition_probability, states_label_index, states_label_index)
 #print (A)
 B = convert_map_to_matrix(emission_probability, states_label_index, observations_label_index)
-print (B)
+#print (B)
+observations_index = convert_observations_to_index(observations, observations_label_index)
+pi = convert_map_to_vector(start_probability, states_label_index)
+print (pi)
+
