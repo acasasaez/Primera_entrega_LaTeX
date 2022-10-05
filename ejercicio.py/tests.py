@@ -34,5 +34,13 @@ def generate_index_map(lables):
 states_label_index, states_index_label = generate_index_map(states)
 observations_label_index, observations_index_label = generate_index_map(observations)
 
-print (states_label_index)
-print (states_index_label)
+#print (states_label_index)
+#print (states_index_label)
+#print (observations_label_index)
+#print (observations_index_label)
+
+def convert_observations_to_index(observations, label_index):
+    list = []
+    for o in observations:
+        list.append(label_index[o])
+    return list
