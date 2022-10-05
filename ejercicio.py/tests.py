@@ -51,3 +51,9 @@ def convert_map_to_vector(map, label_index):
         v[label_index[e]] = map[e]
     return v
 
+def convert_map_to_matrix(map, label_index1, label_index2):
+    m = np.empty((len(label_index1), len(label_index2)), dtype=float)
+    for line in map:
+        for col in map[line]:
+            m[label_index1[line]][label_index2[col]] = map[line][col]
+    return m
