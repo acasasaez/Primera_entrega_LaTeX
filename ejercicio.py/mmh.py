@@ -31,3 +31,9 @@ class HMM():
                 X[n,t] = np.sum(X[:,t+1] * self.A[n,:] * self.B[:, obs_seq[t+1]])
 
         return X
+
+    def observation_prob(self, obs_seq):
+        """ P( entire observation sequence | A, B, pi ) """
+        return np.sum(self._forward(obs_seq)[:,-1])
+
+    
