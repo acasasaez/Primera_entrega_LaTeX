@@ -57,3 +57,6 @@ def convert_map_to_matrix(map, label_index1, label_index2):
         for col in map[line]:
             m[label_index1[line]][label_index2[col]] = map[line][col]
     return m
+
+A = convert_map_to_matrix(transition_probability, states_label_index, states_label_index)
+print (A)
